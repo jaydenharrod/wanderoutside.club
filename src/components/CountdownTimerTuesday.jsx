@@ -4,7 +4,7 @@ const Countdown = () => {
   const [timeLeft, setTimeLeft] = createSignal(calculateTimeLeft());
 
   function calculateTimeLeft() {
-    const targetDate = getNextTuesdayEvent();
+    const targetDate = getNextEvent();
     const difference = targetDate - new Date();
 
     let timeLeft = {};
@@ -19,21 +19,15 @@ const Countdown = () => {
     return timeLeft;
   }
 
-  function getNextTuesdayEvent() {
+  function getNextEvent() {
     const now = new Date();
-    const dayOfWeek = now.getUTCDay();
-    const daysUntilNextTuesday = (2 - dayOfWeek + 7) % 7 || 7;
-    const nextTuesday = new Date(
+    const tuesday = new Date(
       now.getFullYear(),
       now.getMonth(),
-      now.getDate() + daysUntilNextTuesday,
-      6,
-      30,
-      0,
-      0
+      now.getDate() + (2 + 7 - now.getDay() + (7 % 7))
     );
-
-    return nextTuesday;
+    tuesday.setHours(6, 30, 0, 0);
+    return tuesday;
   }
 
   onMount(() => {

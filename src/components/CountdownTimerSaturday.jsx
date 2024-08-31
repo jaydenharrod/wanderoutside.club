@@ -4,7 +4,7 @@ const Countdown = () => {
   const [timeLeft, setTimeLeft] = createSignal(calculateTimeLeft());
 
   function calculateTimeLeft() {
-    const targetDate = getNextSaturdayEvent();
+    const targetDate = getNextEvent();
     const difference = targetDate - new Date();
 
     let timeLeft = {};
@@ -19,21 +19,15 @@ const Countdown = () => {
     return timeLeft;
   }
 
-  function getNextSaturdayEvent() {
+  function getNextEvent() {
     const now = new Date();
-    const dayOfWeek = now.getUTCDay();
-    const daysUntilNextSaturday = (6 - dayOfWeek + 7) % 7 || 7; // 6 corresponds to Saturday
-    const nextSaturday = new Date(
+    const saturday = new Date(
       now.getFullYear(),
       now.getMonth(),
-      now.getDate() + daysUntilNextSaturday,
-      14, // 2:00 pm in 24-hour format
-      0,
-      0,
-      0
+      now.getDate() + ((13 + 14 - now.getDate()) % 14)
     );
-
-    return nextSaturday;
+    saturday.setHours(14, 0, 0, 0);
+    return saturday;
   }
 
   onMount(() => {
@@ -50,7 +44,7 @@ const Countdown = () => {
     <div className="mt-2">
       {Object.keys(timeLeft()).length ? (
         <div>
-          <p>Sunday 2:00 pm AEST:</p>
+          <p>Saturday 2:00 pm AEST:</p>
           <time
             datetime=""
             id="timeDisplay"

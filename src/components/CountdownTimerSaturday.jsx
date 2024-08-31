@@ -39,7 +39,13 @@ const Countdown = () => {
       nextSaturday.setDate(nextSaturday.getDate() + 14);
     }
 
-    return nextSaturday;
+    return new Date(
+      formatInTimeZone(
+        nextSaturday,
+        "Australia/Sydney",
+        "yyyy-MM-dd'T'HH:mm:ssXXX"
+      )
+    );
   }
 
   onMount(() => {

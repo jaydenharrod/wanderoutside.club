@@ -56,18 +56,20 @@ const Countdown = () => {
     <div className="mt-2">
       {Object.keys(timeLeft()).length ? (
         <div>
-          <p>Tuesday 6:30 am AEST:</p>
           <time
             id="timeDisplay"
             class="text-2xl xl:text-2xl xl:whitespace-nowrap font-serif flex items-center"
           >
             {timeLeft().days}d - {timeLeft().hours}h - {timeLeft().minutes}m
           </time>
+          <p className="text-sm opacity-60">Tuesday 6:30 am</p>
         </div>
       ) : (
         <p>Countdown complete!</p>
       )}
-      <p className="mt-2 opacity-50">See Instagram to confirm event details</p>
+      <p className="mt-2 text-sm underline">
+        See Instagram posts for event details
+      </p>
     </div>
   );
 };

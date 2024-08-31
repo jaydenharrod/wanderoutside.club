@@ -1,33 +1,45 @@
 import { createSignal, onCleanup, onMount } from "solid-js";
+import { differenceInSeconds } from "date-fns";
+import { toZonedTime, formatInTimeZone } from "date-fns-tz";
 
 const Countdown = () => {
   const [timeLeft, setTimeLeft] = createSignal(calculateTimeLeft());
 
   function calculateTimeLeft() {
     const targetDate = getNextEvent();
-    const difference = targetDate - new Date();
+    const now = new Date();
+    const difference = differenceInSeconds(
+      targetDate,
+      toZonedTime(now, "Australia/Sydney")
+    );
 
-    let timeLeft = {};
     if (difference > 0) {
-      timeLeft = {
-        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-        minutes: Math.floor((difference / 1000 / 60) % 60),
-        seconds: Math.floor((difference / 1000) % 60),
+      return {
+        days: Math.floor(difference / (60 * 60 * 24)),
+        hours: Math.floor((difference / (60 * 60)) % 24),
+        minutes: Math.floor((difference / 60) % 60),
+        seconds: difference % 60,
       };
+    } else {
+      return { days: 0, hours: 0, minutes: 0, seconds: 0 };
     }
-    return timeLeft;
   }
 
   function getNextEvent() {
-    const now = new Date();
-    const tuesday = new Date(
-      now.getFullYear(),
-      now.getMonth(),
-      now.getDate() + (2 + 7 - now.getDay() + (7 % 7))
+    const now = toZonedTime(new Date(), "Australia/Sydney");
+    const nextTuesday = new Date(now);
+    nextTuesday.setDate(
+      nextTuesday.getDate() + (2 + 7 - nextTuesday.getDay() + (7 % 7))
     );
-    tuesday.setHours(6, 30, 0, 0);
-    return tuesday;
+    nextTuesday.setHours(6, 30, 0, 0); // Set time to 6:30 AM in the timezone
+
+    return new Date(
+      formatInTimeZone(
+        nextTuesday,
+        "Australia/Sydney",
+        "yyyy-MM-dd'T'HH:mm:ssXXX"
+      )
+    );
   }
 
   onMount(() => {
@@ -46,12 +58,10 @@ const Countdown = () => {
         <div>
           <p>Tuesday 6:30 am AEST:</p>
           <time
-            datetime=""
             id="timeDisplay"
             class="text-2xl xl:text-2xl xl:whitespace-nowrap font-serif flex items-center"
           >
-            {timeLeft().days} days - {timeLeft().hours} hours -{" "}
-            {timeLeft().minutes} minutes
+            {timeLeft().days}d - {timeLeft().hours}h - {timeLeft().minutes}m
           </time>
         </div>
       ) : (

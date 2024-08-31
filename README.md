@@ -11,7 +11,7 @@ A simple landing page for the [@wander.outside.newcastle](htts://instagram.com/w
 
 ## Contribution
 
-- Install: `pnpm`
+- Install: `pnpm install`
 - Run Astro: `pnpm dev`
 - Build Astro: `pnpm build`
 

@@ -1,0 +1,45 @@
+---
+import Card from "./Card/index.astro";
+import Button from "./Button.astro";
+import { LINKS } from "../lib/constants";
+import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+---
+
+<Card colSpan="md:col-span-3" rowSpan="md:row-span-4">
+  <div class="flex w-full h-full">
+    <div class="flex flex-col justify-between md:max-h-[300px] gap-4">
+      <div class="flex flex-col h-full">
+        <p class="m-0 font-light text-6xl">
+          <b class="font-bold">Wander Outside</b> Newcastle NSW
+        </p>
+        <p class="mt-2 text-light">A community for young adventurers</p>
+      </div>
+      <div class="flex gap-4">
+        <a
+          href={LINKS.instagram}
+          aria-label="instagram profile"
+          target="_blank"
+        >
+          <Button aria-label="instagram profile">
+            <Icon name="ri:instagram-fill" class="h-6" />
+            <span class="sr-only">Instagram Profile</span>
+          </Button>
+        </a>
+        <!-- <a href={LINKS.facebook} aria-label="facebook profile" target="_blank">
+          <Button aria-label="facebook profile">
+            <Icon name="ri:facebook-box-fill" class="h-6" />
+            <span class="sr-only">Facebook Group</span>
+          </Button>
+        </a> -->
+      </div>
+    </div>
+    <Image
+      width="300"
+      height="300"
+      src="/ocean-dip.jpg"
+      class="transition-transform hover:-rotate-0 hover:scale-105 ml-4"
+      alt="photo of Newcastle ocean baths"
+    />
+  </div>
+</Card>

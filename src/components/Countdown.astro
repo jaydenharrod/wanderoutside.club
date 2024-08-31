@@ -1,0 +1,22 @@
+---
+import Card from "./Card/index.astro";
+import CountdownTimerTuesday from "./CountdownTimerTuesday.jsx";
+import CountdownTimerSaturday from "./CountdownTimerSaturday.jsx";
+---
+
+<>
+  <Card
+    colSpan="lg:col-span-2"
+    rowSpan="md:row-span-2"
+    title="☕️ TUESDAY: Coffee Countdown"
+  >
+    <CountdownTimerTuesday />
+  </Card>
+  <Card
+    colSpan="lg:col-span-2"
+    rowSpan="md:row-span-2"
+    title="⚡️ SATURDAY: Activity Countdown"
+  >
+    <CountdownTimerSaturday />
+  </Card>
+</>

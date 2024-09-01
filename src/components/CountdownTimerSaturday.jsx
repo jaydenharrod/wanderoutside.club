@@ -1,6 +1,7 @@
 import { createSignal, onCleanup, onMount } from "solid-js";
 import { differenceInSeconds } from "date-fns";
 import { toZonedTime, formatInTimeZone } from "date-fns-tz";
+import { LINKS } from "../lib/constants";
 
 const Countdown = () => {
   const [timeLeft, setTimeLeft] = createSignal(calculateTimeLeft());
@@ -61,7 +62,7 @@ const Countdown = () => {
   return (
     <div className="mt-2">
       {Object.keys(timeLeft()).length ? (
-        <div>
+        <div className="flex flex-col space-between">
           <time
             id="timeDisplay"
             class="text-2xl xl:text-2xl xl:whitespace-nowrap font-serif flex items-center"
@@ -69,13 +70,13 @@ const Countdown = () => {
             {timeLeft().days}d - {timeLeft().hours}h - {timeLeft().minutes}m
           </time>
           <p className="text-sm opacity-70">Saturday 2:00 pm</p>
+          <a className="mt-4 text-sm" href={LINKS.instagram}>
+            See event details on Instagram
+          </a>
         </div>
       ) : (
         <p>Countdown complete!</p>
       )}
-      <p className="mt-2 text-sm underline">
-        See Instagram posts for event details
-      </p>
     </div>
   );
 };

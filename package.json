@@ -25,6 +25,7 @@
     "solid-js": "^1.8.18"
   },
   "devDependencies": {
+    "@iconify-json/mdi": "^1.2.0",
     "@unocss/astro": "^0.61.3",
     "@unocss/postcss": "^0.61.3",
     "@unocss/preset-uno": "^0.61.3",

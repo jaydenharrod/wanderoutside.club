@@ -30,7 +30,7 @@ const Countdown = () => {
     const now = toZonedTime(new Date(), "Australia/Sydney");
     const nextTuesday = new Date(now);
     nextTuesday.setDate(
-      nextTuesday.getDate() + (2 + 7 - nextTuesday.getDay() + (7 % 7))
+      nextTuesday.getDate() + ((2 - nextTuesday.getDay() + 7) % 7)
     );
     nextTuesday.setHours(6, 30, 0, 0); // Set time to 6:30 AM in the timezone
 

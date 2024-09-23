@@ -30,9 +30,9 @@ const Countdown = () => {
     const now = toZonedTime(new Date(), "Australia/Sydney");
     const nextSaturday = new Date(now);
     nextSaturday.setDate(
-      nextSaturday.getDate() + (6 + 7 - nextSaturday.getDay() + (7 % 7))
+      nextSaturday.getDate() + ((6 - nextSaturday.getDay() + 7) % 7)
     );
-    nextSaturday.setHours(14, 0, 0, 0); // Set time to 2:00 PM in the timezone
+    nextSaturday.setHours(10, 0, 0, 0); // Set time to 10:00 AM in the timezone
 
     // Check if the next Saturday is after the current date
     if (nextSaturday <= now) {
@@ -69,7 +69,7 @@ const Countdown = () => {
           >
             {timeLeft().days}d - {timeLeft().hours}h - {timeLeft().minutes}m
           </time>
-          <p className="text-sm opacity-70">Saturday 2:00 pm</p>
+          <p className="text-sm opacity-70">Saturday</p>
           <a className="mt-4 text-sm" href={LINKS.instagram}>
             See event details on Instagram
           </a>

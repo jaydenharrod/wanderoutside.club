@@ -1,6 +1,6 @@
 # Wander Outside Newcastle
 
-A simple landing page for the [@wander.outside.newcastle](htts://instagram.com/wander.outside.newcastle) social club site.
+A simple landing page for the [@wander.outside.club](htts://instagram.com/wander.outside.club) site.
 
 ## Tech Stack
 

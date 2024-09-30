@@ -1,5 +1,5 @@
 export const LINKS = {
-  instagram: "https://www.instagram.com/wander.outside.newcastle/",
+  instagram: "https://www.instagram.com/wander.outside.club/",
   facebook: "https://www.facebook.com/",
   calendar:
     "https://calendar.google.com/calendar/u/1?cid=NTA4YzM2Nzg2N2FkODYzZDAxMjExZDU4NWZkNmY0NTAzYWVkYWM1M2FiYzA1MjYzYzIyNWZmZjJjNmJhNTIwOEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t",

@@ -63,7 +63,7 @@ const Countdown = () => {
           >
             {timeLeft().days}d - {timeLeft().hours}h - {timeLeft().minutes}m
           </time>
-          <p className="text-sm opacity-70">Tuesday 6:30 am</p>
+          <p className="text-sm opacity-70">Tuesday, 6:30 am</p>
           <a className="mt-4 text-sm" href={LINKS.instagram}>
             See event details on Instagram
           </a>

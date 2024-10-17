@@ -29,14 +29,14 @@ const Countdown = () => {
   function getNextEvent() {
     const now = toZonedTime(new Date(), "Australia/Sydney");
     const nextAdventure = new Date(now);
-    // set date to the 7th October 2024
-    nextAdventure.setFullYear(2024, 9, 7);
-    // set time to 11:00 AM
-    nextAdventure.setHours(11, 0, 0, 0);
+    // set date
+    nextAdventure.setFullYear(2024, 9, 20);
+    // set time
+    nextAdventure.setHours(14, 0, 0, 0);
 
-    // Check if the next Saturday is after the current date
+    // Check if the next is after the current date
     if (nextAdventure <= now) {
-      // If it is, add 14 days to get the next fortnightly Saturday
+      // If it is, add 14 days to get the next fortnightly
       nextAdventure.setDate(nextAdventure.getDate() + 14);
     }
 
@@ -69,7 +69,7 @@ const Countdown = () => {
           >
             {timeLeft().days}d - {timeLeft().hours}h - {timeLeft().minutes}m
           </time>
-          <p className="text-sm opacity-70">Monday 7th October, 11:00am</p>
+          <p className="text-sm opacity-70">Sunday 20th October, 2:00pm</p>
           <a className="mt-4 text-sm" href={LINKS.instagram}>
             See event details on Instagram
           </a>
